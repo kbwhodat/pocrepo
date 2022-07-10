@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: all
   vars:
     ansible_user: "{{ lookup('env', 'user') }}"
     ansible_password: "{{ lookup('env', 'password') }}"
