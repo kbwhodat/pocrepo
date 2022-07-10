@@ -3,6 +3,8 @@
   vars:
     ansible_user: "{{ lookup('env', 'user') }}"
     ansible_password: "{{ lookup('env', 'password') }}"
+    ansible_connection: "{{ lookup('env', 'connection') }}"
+    ansible_shell_type: "{{ lookup('env', 'shell') }}"
   roles:
     - role: nxlog
     # - role: logstash
