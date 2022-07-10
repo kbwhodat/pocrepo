@@ -1,0 +1,49 @@
+---
+
+# - name: Check NXLog installed
+#   win_service:
+#     name: nxlog
+#   register: service_info
+
+# - name: Installing logstash
+#   win_chocolatey:
+#     name: logstash
+#     state: present
+  # when: not service_info.exists
+
+- name: Get Url
+  win_get_url:
+    url: https://artifacts.elastic.co/downloads/logstash/logstash-8.3.1-windows-x86_64.zip
+    dest: C:\Windows\Temp
+
+- name: unzip Logstash
+  win_unzip:
+    src: C:\Windows\Temp\logstash-8.3.1-windows-x86_64.zip
+    dest: C:\Program Files\logstash
+
+- name: Copy logstash configuration
+  template:
+    src: "{{ logstash_conf_template }}"
+    dest: "C:\Program Files\logstash"
+    owner: root
+    group: root
+    mode: 755
+
+
+# - name: Installing nssm
+#   win_chocolatey:
+#     name: nssm
+#     state: present
+#   # when: not service_info.exists
+
+# - name: Make Logstash a service
+#   win_command: nssm install logstash logstash
+#   # when: not service_info.exists
+
+# - name: Refesh
+#   win_command: refreshenv
+
+# - name: Set logstash service startup mode to auto and ensure it's started.
+#   win_service:
+#     name: logstash
+#     state: restarted

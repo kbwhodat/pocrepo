@@ -1,0 +1,64 @@
+---
+- hosts: dev
+  vars:
+    ansible_user: "{{ lookup('env', 'user') }}"
+    ansible_password: "{{ lookup('env', 'password') }}"
+  roles:
+    - role: nxlog
+    # - role: logstash
+#==============================================================================================================#
+    # - name: Download NXLog on Windows
+    #   ansible.windows.win_get_url:
+    #     url: 'https://nxlog.co/system/files/products/files/348/nxlog-ce-3.0.2272.msi'
+    #     dest: 'C:\Users\katob\Downloads\nxlog-ce-3.0.2272.msi'
+
+
+
+    # - name: Check NXLog installed
+    #   win_service:
+    #     name: nxlog
+    #   register: service_info
+
+    # - name: Install NXLog
+    #   win_package:
+    #     path: "https://nxlog.co/system/files/products/files/348/nxlog-ce-3.0.2284.msi"
+    #     force_basic_auth: yes
+    #     state: present
+      # when: not service_info.exists
+
+
+    # - name: Install winlogbeat
+    #   unarchive:
+    #     path: "https://artifacts.elastic.co/downloads/logstash/logstash-8.3.1-windows-x86_64.zip"
+    #     dest: "C:\Program Files"
+    #     state: present
+
+    # - name: Copy a python script
+    #   copy:
+    #     src: scripts/output.py
+    #     dest: C:\Program Files\nxlog\conf\output.py
+    #     owner: root
+    #     group: root
+    #     mode: '755'
+
+    # - name: Copy requirements
+    #   copy:
+    #     src: scripts/requirements.txt
+    #     dest: C:\Program Files\nxlog\conf\requirements.txt
+    #     owner: root
+    #     group: root
+    #     mode: '755'
+
+    # - name: Install python packages
+    #   ansible.builtin.pip:
+    #     requirements: C:\Program Files\nxlog\conf\requirements.txt
+
+    # - name: Set nxlog service startup mode to auto and ensure it's started.
+    #   win_service:
+    #     name: nxlog
+    #     state: restarted
+
+    # - name: Set winlogbest service startup mode to auto and ensure it's started.
+    #   win_service:
+    #     name: winlogbeat
+    #     state: restarted

@@ -1,0 +1,1 @@
+logstash_conf_template: 'logstash.conf.tpl'

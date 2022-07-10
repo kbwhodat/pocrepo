@@ -1,0 +1,33 @@
+---  
+# - name: Check NXLog installed
+#   win_service:
+#     name: nxlog
+#   register: service_info
+
+- name: Install NXLog
+  win_package:
+    path: "https://nxlog.co/system/files/products/files/348/nxlog-ce-3.0.2284.msi"
+    force_basic_auth: yes
+    state: present
+  # when: not service_info.exists
+
+- name: Copy a new "windows.conf" file into the NXLog default config directory
+  copy:
+    src: config/windows.conf
+    dest: C:\Program Files\nxlog\conf\nxlog.conf
+    owner: root
+    group: root
+    mode: '750'
+
+- name: Copy Logstash cert
+  template:
+    src: "templates/pem.tpl"
+    dest: C:\Program files\nxlog\cert\ca.pem
+    owner: root
+    group: root
+    mode: 664
+
+- name: Set nxlog service startup mode to auto and ensure it's started.
+  win_service:
+    name: nxlog
+    state: restarted
