@@ -1,5 +1,5 @@
-[dev]
-192.168.56.101
+[local]
+localhost = ansible_connection=local
 
 [all:vars]
 ansible_connection=ssh
