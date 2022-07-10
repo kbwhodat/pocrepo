@@ -1,6 +1,1 @@
-[dev]
 192.168.56.101
-
-[all:vars]
-ansible_connection=ssh
-ansible_shell_type=cmd
