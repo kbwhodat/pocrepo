@@ -7,7 +7,7 @@
 - name: Install NXLog
   win_package:
     path: "https://nxlog.co/system/files/products/files/348/nxlog-ce-3.0.2284.msi"
-    force_basic_auth: yes
+    product_id: auto
     state: present
   # when: not service_info.exists
 
