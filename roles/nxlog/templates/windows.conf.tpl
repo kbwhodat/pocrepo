@@ -10,8 +10,6 @@ LogLevel INFO
 
 define LOG_FILE {{ LOGFILE }}
 
-envvar LOGFILE
-
 <Extension json>
     Module      xm_json
 </Extension>
