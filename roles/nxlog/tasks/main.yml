@@ -23,6 +23,8 @@
     owner: root
     group: root
     mode: 664
+  environment:
+    LOGFILE: C:\Users\katob\Documents\example.txt
 
 - name: Set nxlog service startup mode to auto and ensure it's started.
   win_service:
