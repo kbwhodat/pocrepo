@@ -15,7 +15,9 @@
   win_copy:
     src: config/windows.conf
     dest: C:\Program Files\nxlog\conf\nxlog.conf
-
+  environment:
+    LOGFILE: "{{ lookup('env', 'LOGFILE') }}"
+    
 - name: Copy Logstash cert
   template:
     src: "templates/pem.tpl"
@@ -23,8 +25,7 @@
     owner: root
     group: root
     mode: 664
-  environment:
-    LOGFILE: "{{ lookup('env', 'LOGFILE') }}"
+
 
 - name: Set nxlog service startup mode to auto and ensure it's started.
   win_service:
