@@ -12,7 +12,7 @@
   # when: not service_info.exists
 
 - name: Setting ENV var for log file path
-  ansible.windows.win_environment:
+  win_environment:
     state: present
     name: LOGFILE
     value: "{{ lookup('env', 'LOGFILE') }}"
