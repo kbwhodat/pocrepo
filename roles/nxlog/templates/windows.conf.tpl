@@ -8,15 +8,13 @@ SpoolDir %ROOT%\data
 LogFile %ROOT%\data\nxlog.log
 LogLevel INFO
 
-define LOG_FILE {{ LOGFILE }}
-
 <Extension json>
     Module      xm_json
 </Extension>
   
 <Input mylogs>
     Module      im_file
-    Files       '%LOG_FILE%'
+    Files       {{ LOGFILE }}
     SavePos     TRUE
     InputType   LineBased
     Exec        to_json();
