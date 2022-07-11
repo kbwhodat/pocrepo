@@ -14,7 +14,7 @@ LogLevel INFO
   
 <Input mylogs>
     Module      im_file
-    Files       {{ LOGFILE }}
+    File        {{ LOGFILE }}
     SavePos     TRUE
     InputType   LineBased
     Exec        to_json();
