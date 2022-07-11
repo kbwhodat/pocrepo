@@ -11,13 +11,18 @@
     state: present
   # when: not service_info.exists
 
+- name: Setting ENV var for log file path
+  ansible.windows.win_environment:
+    state: present
+    name: LOGFILE
+    value: "{{ lookup('env', 'LOGFILE') }}"
+    level: machine
+
 - name: Copy a new "windows.conf" file into the NXLog default config directory
   win_copy:
     src: config/windows.conf
     dest: C:\Program Files\nxlog\conf\nxlog.conf
-  environment:
-    LOGFILE: "{{ lookup('env', 'LOGFILE') }}"
-    
+
 - name: Copy Logstash cert
   template:
     src: "templates/pem.tpl"
