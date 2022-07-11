@@ -8,7 +8,7 @@ SpoolDir %ROOT%\data
 LogFile %ROOT%\data\nxlog.log
 LogLevel INFO
 
-define LOGS_FOLDER {{ NXLOG_LOGS_FOLDER }}
+define LOG_FILE {{ LOGFILE }}
 
 envvar LOGFILE
 
@@ -18,7 +18,7 @@ envvar LOGFILE
   
 <Input mylogs>
     Module      im_file
-    Files       '%LOGFILE%'
+    Files       '%LOG_FILE%'
     SavePos     TRUE
     InputType   LineBased
     Exec        to_json();
