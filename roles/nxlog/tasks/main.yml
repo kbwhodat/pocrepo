@@ -12,12 +12,9 @@
   # when: not service_info.exists
 
 - name: Copy a new "windows.conf" file into the NXLog default config directory
-  copy:
+  win_copy:
     src: config/windows.conf
     dest: C:\Program Files\nxlog\conf\nxlog.conf
-    owner: root
-    group: root
-    mode: '750'
 
 - name: Copy Logstash cert
   template:
