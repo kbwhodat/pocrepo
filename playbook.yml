@@ -5,10 +5,10 @@
     ansible_password: "{{ lookup('env', 'password') }}"
     ansible_connection: "{{ lookup('env', 'connection') }}"
     ansible_shell_type: "{{ lookup('env', 'shell') }}"
-    ansible_port: "{{ lookup('env', 'ansible_port') }}"
-    ansible_winrm_scheme: "{{ lookup('env', 'ansible_winrm_scheme') }}"
-    ansible_winrm_transport: "{{ lookup('env', 'ansible_winrm_transport') }}"
-    ansible_winrm_server_cert_validation: "{{ lookup('env', 'ansible_winrm_server_cert_validation') }}"
+    ansible_port: "{{ lookup('env', 'ansible_port', errors='ignore') }}"
+    ansible_winrm_scheme: "{{ lookup('env', 'ansible_winrm_scheme', errors='ignore') }}"
+    ansible_winrm_transport: "{{ lookup('env', 'ansible_winrm_transport', errors='ignore') }}"
+    ansible_winrm_server_cert_validation: "{{ lookup('env', 'ansible_winrm_server_cert_validation', errors='ignore') }}"
   roles:
     - role: nxlog
     # - role: logstash
@@ -18,7 +18,8 @@
     #     url: 'https://nxlog.co/system/files/products/files/348/nxlog-ce-3.0.2272.msi'
     #     dest: 'C:\Users\katob\Downloads\nxlog-ce-3.0.2272.msi'
 
-
+git config --global user.email "kato.byantalo@aiazing.com"
+  git config --global user.name "kbwhodat"
 
     # - name: Check NXLog installed
     #   win_service:
