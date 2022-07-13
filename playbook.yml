@@ -6,7 +6,7 @@
     ansible_connection: "{{ lookup('env', 'connection') }}"
     ansible_shell_type: "{{ lookup('env', 'shell') }}"
     ansible_port: "{{ lookup('env', 'ansible_port') or '22' }}"
-    ansible_winrm_scheme: "{{ lookup('env', 'ansible_winrm_scheme', errors='ignore') }}"
-    ansible_winrm_server_cert_validation: "{{ lookup('env', 'ansible_winrm_server_cert_validation', errors='ignore') }}"
+    ansible_winrm_scheme: "{{ lookup('env', 'ansible_winrm_scheme') }}"
+    ansible_winrm_server_cert_validation: "{{ lookup('env', 'ansible_winrm_server_cert_validation') }}"
   roles:
     - role: nxlog
