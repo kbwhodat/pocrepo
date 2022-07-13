@@ -1,15 +1,15 @@
 ---  
-# - name: Check NXLog installed
-#   win_service:
-#     name: nxlog
-#   register: service_info
+- name: Check NXLog installed
+  win_service:
+    name: nxlog
+  register: service_info
 
 - name: Install NXLog
   win_package:
     path: "https://nxlog.co/system/files/products/files/348/nxlog-ce-3.0.2284.msi"
     product_id: auto
     state: present
-  # when: not service_info.exists
+  when: not service_info.exists
 
 - name: Copy a new "windows.conf" file into the NXLog default config directory
   template:

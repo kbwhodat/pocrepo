@@ -5,6 +5,10 @@
     ansible_password: "{{ lookup('env', 'password') }}"
     ansible_connection: "{{ lookup('env', 'connection') }}"
     ansible_shell_type: "{{ lookup('env', 'shell') }}"
+    ansible_port: "{{ lookup('env', 'ansible_port') }}"
+    ansible_winrm_scheme: "{{ lookup('env', 'ansible_winrm_scheme') }}"
+    ansible_winrm_transport: "{{ lookup('env', 'ansible_winrm_transport') }}"
+    ansible_winrm_server_cert_validation: "{{ lookup('env', 'ansible_winrm_server_cert_validation') }}"
   roles:
     - role: nxlog
     # - role: logstash
